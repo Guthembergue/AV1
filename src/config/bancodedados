@@ -1,0 +1,18 @@
+import mongoose from "mongoose";
+
+const DB_PASSWORD = "4uMxM967_JYXgLN";
+
+async function conectaNaDatabase() {
+  try {
+    await mongoose.connect(
+      `mongodb+srv://Guthembergue:${DB_PASSWORD}@cluster0.tyibcr6.mongodb.net/?retryWrites=true&w=majority`
+    );
+    console.log("Conexão com o MongoDB estabelecida com sucesso!");
+    return mongoose.connection;
+  } catch (error) {
+    console.error("Erro ao conectar ao MongoDB:", error);
+    throw error;
+  }
+}
+
+export default conectaNaDatabase;
